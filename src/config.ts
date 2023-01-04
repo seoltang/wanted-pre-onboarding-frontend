@@ -5,3 +5,9 @@ export const api = {
 	login: `${BASE_URL}/users/login`,
 	signUp: `${BASE_URL}/users/create`,
 };
+
+export const PATH = {
+	login: '/auth/login',
+	signUp: '/auth/signup',
+	toDoList: '/todolist',
+};

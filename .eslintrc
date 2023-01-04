@@ -11,6 +11,14 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
   "rules":  {
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "import/extensions": [
@@ -23,14 +31,8 @@
         "tsx": "never"
       }
    ],
-   "no-use-before-define": ["error", { "variables": false }]
-  },
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
-    "import/resolver": {
-      "typescript": {}
-    }
+   "no-use-before-define": ["error", { "variables": false }],
+   "react/function-component-definition": ["error", { "namedComponents": "arrow-function" }],
+   "no-alert": "off"
   }
 }
