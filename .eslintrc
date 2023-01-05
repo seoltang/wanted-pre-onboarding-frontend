@@ -34,14 +34,5 @@
    "no-use-before-define": ["error", { "variables": false }],
    "react/function-component-definition": ["error", { "namedComponents": "arrow-function" }],
    "no-alert": "off"
-  },
-  "options": {
-    "prettier/prettier": [
-      "error",
-      {
-        "tabWidth": 2,
-        "useTabs": false
-      }
-    ]
   }
 }
