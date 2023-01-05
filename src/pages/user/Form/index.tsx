@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import formData from './formData';
 import theme, { flexCustom } from '../../../styles/theme';
-
-const formData = [
-  {
-    type: 'email',
-    name: '이메일',
-  },
-  {
-    type: 'password',
-    name: '비밀번호',
-  },
-];
 
 export type InputValue = { [index: string]: string };
 
@@ -86,7 +76,7 @@ const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
         <SubmitBtn disabled={!Object.values(isValid).every((isValidValue) => isValidValue)}>{submitType}</SubmitBtn>
       </StyledForm>
       <Link to={linkUrl}>
-        <SignUpBtn>{linkMessage}</SignUpBtn>
+        <NavigateBtn>{linkMessage}</NavigateBtn>
       </Link>
     </Container>
   );
@@ -146,7 +136,7 @@ const SubmitBtn = styled.button`
   }
 `;
 
-const SignUpBtn = styled.div`
+const NavigateBtn = styled.div`
   margin-top: 32px;
   color: ${theme.accentColor};
   font-size: 14px;
