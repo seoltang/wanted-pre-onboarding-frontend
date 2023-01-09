@@ -39,6 +39,8 @@
 ```bash
 > git clone https://github.com/seoltang/wanted-pre-onboarding-challenge-fe-1.git
 
+> cd wanted-pre-onboarding-challenge-fe-1
+
 > npm install
 
 > npm start
@@ -48,6 +50,8 @@
 
 ```bash
 > git clone https://github.com/seoltang/wanted-pre-onboarding-challenge-fe-1-api.git
+
+> cd wanted-pre-onboarding-challenge-fe-1-api
 
 > yarn
 
