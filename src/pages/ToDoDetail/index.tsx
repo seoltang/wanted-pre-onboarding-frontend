@@ -3,11 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import ToDos from '../ToDoList/ToDos';
-import EditToDoButton from './EditToDoButton';
 import DeleteToDoButton from './DeleteToDoButton';
+import EditToDoButton from './EditToDoButton';
+import EditToDoForm from './\bEditToDoForm';
+import useTokenCheck from '../../hooks/useTokenCheck';
 import { api, PATH } from '../../config';
 import { MiniButton, flexCustom } from '../../styles/theme';
-import EditToDoForm from './\bEditToDoForm';
 
 export type ModalProps = {
   setIsEditFormOpen(isEditFormOpen: boolean): void;
@@ -46,6 +47,8 @@ const ToDoDetail = () => {
 
     getToDoDetail();
   }, [id, isEditFormOpen]);
+
+  useTokenCheck();
 
   return (
     <Container>
