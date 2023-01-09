@@ -64,7 +64,7 @@ const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
           {formData.map(({ type, name }) => (
             <StyledLabel key={type}>
               <LabelName>{name}</LabelName>
-              <StyledInput name={type} type={type} onInput={validate} />
+              <StyledInput name={type} type={type} onInput={validate} value={inputValue[type]} />
               <ValidationIcon
                 className={`fa-regular fa-circle-${isValid[type] ? 'check' : 'xmark'}`}
                 isValid={isValid[type]}
@@ -99,10 +99,10 @@ const InputWrapper = styled.div`
 const StyledInput = styled.input`
   padding: 0 16px;
   width: 360px;
-  height: 32px;
+  height: 36px;
   border: 0;
   border-radius: 16px;
-  box-shadow: 2px 2px ${theme.color.gray} inset;
+  box-shadow: inset 1px 2px 4px 1px rgb(0 0 0 / 0.1);
   font-size: 16px;
 `;
 
@@ -133,6 +133,10 @@ const SubmitBtn = styled.button`
   &:disabled {
     background-color: ${theme.color.gray};
     cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: ${theme.darkAccentColor};
   }
 `;
 

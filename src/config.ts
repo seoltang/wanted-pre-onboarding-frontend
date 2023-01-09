@@ -9,5 +9,5 @@ export const api = {
 export const PATH = {
   login: '/auth/login',
   signUp: '/auth/signup',
-  toDoList: '/todolist',
+  toDo: '/todo',
 };

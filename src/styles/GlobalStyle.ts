@@ -32,6 +32,19 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     cursor: pointer;
   }
+
+  li {
+    list-style: none;
+  }
+
+  input {
+    font-family: inherit;
+  }
+
+  textarea {
+    font-family: inherit;
+    outline: none;
+  }
 `;
 
 export default GlobalStyle;

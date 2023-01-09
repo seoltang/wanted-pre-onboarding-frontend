@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PATH } from '../config';
 
 const useAutoLogin = () => {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ const useAutoLogin = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    if (token) navigate('/todolist');
+    if (token) navigate(PATH.toDo);
   }, [navigate]);
 };
 
