@@ -1,11 +1,13 @@
-# TO DO LIST
+# TO DO 🪄
+
+> 로그인하고 할 일 목록을 관리할 수 있는 To Do List
 
 ## Flow Chart
-<img width="2690" alt="To Do List Flow" src="https://user-images.githubusercontent.com/91963656/211231513-d39a2f37-2685-41e4-a37b-734ce4108b56.png">
+<img width="2690" alt="To Do List Flow" src="https://user-images.githubusercontent.com/91963656/211232662-d6b721b1-20c0-4dc6-b463-97fe84c9f632.png">
 
 ## 기능 목록
 
-### Assignment 1 - Login / SignUp
+### Login / SignUp
 
 - 로그인 / 회원가입 기능
   - [x] 이메일, 비밀번호 input, 제출 button을 갖도록 구성
@@ -17,8 +19,9 @@
   - [x] 응답으로 받은 토큰은 로컬 스토리지에 저장
   - [x] 다음 번에 로그인 시 토큰이 존재한다면 루트 경로로 리다이렉트
   - [x] 어떤 경우든 토큰이 유효하지 않다면 사용자에게 알리고 로그인 페이지로 리다이렉트
+  - [x] 로그아웃 시 토큰 삭제
 
-### Assignment 2 - Todo List
+### Todo List
 
 - Todo List API를 호출하여 Todo List CRUD 기능 구현
   - [x] 목록 / 상세 영역으로 나누어 구현
@@ -31,3 +34,22 @@
   - [x] 개별 Todo를 조회 순서에 따라 페이지 뒤로가기를 통하여 조회 가능
 - 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현
   - [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영
+
+## 실행
+```bash
+> git clone https://github.com/seoltang/wanted-pre-onboarding-challenge-fe-1.git
+
+> npm install
+
+> npm start
+```
+
+### API 실행
+
+```bash
+> git clone https://github.com/seoltang/wanted-pre-onboarding-challenge-fe-1-api.git
+
+> yarn
+
+> yarn start # http://localhost:8080
+```
