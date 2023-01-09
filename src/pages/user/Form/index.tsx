@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import formData from './formData';
+import { validateEmail, validatePassword } from './validation';
 import theme, { flexCustom } from '../../../styles/theme';
 
 export type InputValue = { [index: string]: string };
@@ -14,42 +15,19 @@ type FormProps = {
 };
 
 const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
-  const [isValid, setIsValid] = useState<{ [index: string]: boolean }>({
-    email: false,
-    password: false,
-  });
-
   const [inputValue, setInputValue] = useState<InputValue>({
     email: '',
     password: '',
   });
 
-  const validateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const email = event.target.value;
-    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-
-    setIsValid((state) => ({ ...state, email: emailRegex.test(email) }));
-    setInputValue((state) => ({ ...state, email }));
+  const isValid: { [index: string]: boolean } = {
+    email: validateEmail(inputValue.email),
+    password: validatePassword(inputValue.password),
   };
 
-  const validatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const password = event.target.value;
-
-    setIsValid((state) => ({ ...state, password: password.length >= 8 }));
-    setInputValue((state) => ({ ...state, password }));
-  };
-
-  const validate = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const validateType =
-      {
-        email: validateEmail,
-        password: validatePassword,
-      }[event.target.name] ??
-      (() => {
-        throw new Error();
-      });
-
-    validateType(event);
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setInputValue((state) => ({ ...state, [name]: value }));
   };
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -64,7 +42,7 @@ const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
           {formData.map(({ type, name }) => (
             <StyledLabel key={type}>
               <LabelName>{name}</LabelName>
-              <StyledInput name={type} type={type} onInput={validate} value={inputValue[type]} />
+              <StyledInput name={type} type={type} onInput={handleInput} value={inputValue[type]} />
               <ValidationIcon
                 className={`fa-regular fa-circle-${isValid[type] ? 'check' : 'xmark'}`}
                 isValid={isValid[type]}
@@ -73,7 +51,7 @@ const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
             </StyledLabel>
           ))}
         </InputWrapper>
-        <SubmitBtn disabled={!Object.values(isValid).every((isValidValue) => isValidValue)}>{submitType}</SubmitBtn>
+        <SubmitBtn disabled={Object.values(isValid).some((isValidValue) => !isValidValue)}>{submitType}</SubmitBtn>
       </StyledForm>
       <Link to={linkUrl}>
         <NavigateBtn>{linkMessage}</NavigateBtn>
