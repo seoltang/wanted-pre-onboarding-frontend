@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:8080';
+export const BASE_URL = 'https://seoltang-todo-api.netlify.app';
 
 export const api = {
   todos: `${BASE_URL}/todos`,
