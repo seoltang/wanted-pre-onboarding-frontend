@@ -29,6 +29,9 @@
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
     "prettier": "prettier --write --config ./.prettierrc './src/**/*.{ts,tsx}'"
   },
+  "proxy":
+    "https://seoltang-todo-api.netlify.app/"
+  ,
   "eslintConfig": {
     "extends": [
       "react-app",
