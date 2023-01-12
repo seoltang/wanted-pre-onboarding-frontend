@@ -2,10 +2,20 @@
 
 > 로그인하고 할 일 목록을 관리할 수 있는 To Do List
 
-## Flow Chart
+## 🔎 미리 보기
+
+### Login / SignUp
+
+![auth](https://user-images.githubusercontent.com/91963656/212088422-872653a5-87cf-429a-bf21-1c94b1e7b317.gif)
+
+### Todo List
+
+![todo](https://user-images.githubusercontent.com/91963656/212083629-591e521e-ab57-4bd3-a0a2-aeddc7afeb9e.gif)
+
+## 🔄 Flow Chart
 <img width="2690" alt="To Do List Flow" src="https://user-images.githubusercontent.com/91963656/211232662-d6b721b1-20c0-4dc6-b463-97fe84c9f632.png">
 
-## 기능 목록
+## 🚀 기능 목록
 
 ### Login / SignUp
 
@@ -35,7 +45,8 @@
 - 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현
   - [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영
 
-## 실행
+## 🕹 실행
+
 ```bash
 > git clone https://github.com/seoltang/wanted-pre-onboarding-challenge-fe-1.git
 
@@ -46,7 +57,7 @@
 > npm start
 ```
 
-### API 실행
+### [API](https://github.com/seoltang/wanted-pre-onboarding-challenge-fe-1-api) 실행
 
 ```bash
 > git clone https://github.com/seoltang/wanted-pre-onboarding-challenge-fe-1-api.git
