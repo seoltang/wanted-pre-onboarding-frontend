@@ -1,4 +1,4 @@
-export const BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:8080' : '/proxy';
+export const BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:8080' : '';
 
 export const api = {
   todos: `${BASE_URL}/todos`,
