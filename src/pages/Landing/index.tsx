@@ -10,7 +10,9 @@ const Landing = () => {
 
   return (
     <Container>
-      <MainTitle>TO DO 🪄 LIST</MainTitle>
+      <MainTitle>
+        TO DO <MagicWandImg alt="magic wand" src="/favicon/android-chrome-512x512.png" /> LIST
+      </MainTitle>
       <SubTitle>할 일을 체계적으로 관리해 보세요.</SubTitle>
       <AuthWrapper>
         <Link to={PATH.login}>
@@ -33,6 +35,11 @@ const MainTitle = styled.h1`
   padding-top: 300px;
   font-size: 72px;
   font-weight: 900;
+`;
+
+const MagicWandImg = styled.img`
+  width: 72px;
+  vertical-align: bottom;
 `;
 
 const SubTitle = styled.h2`
