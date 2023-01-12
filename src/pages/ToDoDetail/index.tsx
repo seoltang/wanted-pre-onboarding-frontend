@@ -7,17 +7,8 @@ import DeleteToDoButton from './DeleteToDoButton';
 import EditToDoButton from './EditToDoButton';
 import EditToDoForm from './\bEditToDoForm';
 import useTokenCheck from '../../hooks/useTokenCheck';
-import { api, PATH } from '../../config';
+import { AUTHORIZATION_KEY, ACCESS_TOKEN_KEY, api, PATH } from '../../config';
 import { MiniButton, flexCustom } from '../../styles/theme';
-
-export type ModalProps = {
-  setIsEditFormOpen(isEditFormOpen: boolean): void;
-  id?: string;
-  toDo?: {
-    title: string;
-    content: string;
-  };
-};
 
 const ToDoDetail = () => {
   const [toDo, setToDo] = useState({
@@ -33,7 +24,7 @@ const ToDoDetail = () => {
     const getToDoDetail = async () => {
       try {
         const response = await axios.get(`${api.todos}/${id}`, {
-          headers: { Authorization: localStorage.getItem('token') },
+          headers: { [AUTHORIZATION_KEY]: localStorage.getItem(ACCESS_TOKEN_KEY) },
         });
 
         if (response.statusText === 'OK') {

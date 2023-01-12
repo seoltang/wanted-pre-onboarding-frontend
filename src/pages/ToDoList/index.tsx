@@ -7,10 +7,6 @@ import AddToDoForm from './AddToDoForm';
 import useTokenCheck from '../../hooks/useTokenCheck';
 import { flexCustom } from '../../styles/theme';
 
-export type ModalProps = {
-  setIsAddFormOpen(isAddFormOpen: boolean): void;
-};
-
 const ToDoList = () => {
   const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled, { css } from 'styled-components';
 import theme, { MiniRoundedButton, MiniRoundedBorderButton, flexCustom } from '../../../styles/theme';
-import type { ModalProps } from '..';
-import { api } from '../../../config';
+import type { EditModalProps } from '../../../types/modal';
+import { AUTHORIZATION_KEY, ACCESS_TOKEN_KEY, api } from '../../../config';
 
-const EditToDoForm = ({ setIsEditFormOpen, id, toDo }: ModalProps) => {
+const EditToDoForm = ({ setIsEditFormOpen, id, toDo }: EditModalProps) => {
   const [editedToDo, setEditedToDo] = useState({
     title: toDo?.title,
     content: toDo?.content,
@@ -28,7 +28,7 @@ const EditToDoForm = ({ setIsEditFormOpen, id, toDo }: ModalProps) => {
 
     try {
       const response = await axios.put(`${api.todos}/${id}`, editedToDo, {
-        headers: { Authorization: localStorage.getItem('token') },
+        headers: { [AUTHORIZATION_KEY]: localStorage.getItem(ACCESS_TOKEN_KEY) },
       });
 
       if (response.statusText === 'OK') {

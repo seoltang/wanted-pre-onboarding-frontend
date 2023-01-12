@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import { MiniButton } from '../../../styles/theme';
-import { api, PATH } from '../../../config';
+import { AUTHORIZATION_KEY, ACCESS_TOKEN_KEY, api, PATH } from '../../../config';
 
 const DeleteToDoButton = ({ id }: { id: string | undefined }) => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const DeleteToDoButton = ({ id }: { id: string | undefined }) => {
     if (window.confirm('삭제하시겠습니까?')) {
       try {
         const response = await axios.delete(`${api.todos}/${id}`, {
-          headers: { Authorization: localStorage.getItem('token') },
+          headers: { [AUTHORIZATION_KEY]: localStorage.getItem(ACCESS_TOKEN_KEY) },
         });
 
         if (response.statusText === 'OK') {

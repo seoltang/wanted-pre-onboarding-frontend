@@ -11,3 +11,6 @@ export const PATH = {
   signUp: '/auth/signup',
   toDo: '/todo',
 };
+
+export const AUTHORIZATION_KEY = 'Authorization';
+export const ACCESS_TOKEN_KEY = 'access_token';

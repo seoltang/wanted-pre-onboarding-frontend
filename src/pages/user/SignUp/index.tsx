@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Form, { InputValue } from '../Form';
+import Form from '../Form';
+import type { InputValue } from '../../../types/authForm';
 import { PATH, api } from '../../../config';
 import useAutoLogin from '../../../hooks/useAutoLogin';
 

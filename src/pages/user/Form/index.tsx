@@ -3,16 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import formData from './formData';
 import { validateEmail, validatePassword } from './validation';
+import type { FormProps, InputValue } from '../../../types/authForm';
 import theme, { flexCustom } from '../../../styles/theme';
-
-export type InputValue = { [index: string]: string };
-
-type FormProps = {
-  submitType: string;
-  postForm: (inputValue: InputValue) => void;
-  linkUrl: string;
-  linkMessage: string;
-};
 
 const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
   const [inputValue, setInputValue] = useState<InputValue>({

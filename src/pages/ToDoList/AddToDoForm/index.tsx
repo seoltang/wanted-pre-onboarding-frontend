@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styled, { css } from 'styled-components';
 import theme, { MiniRoundedButton, MiniRoundedBorderButton, flexCustom } from '../../../styles/theme';
-import type { ModalProps } from '..';
-import { api } from '../../../config';
+import type { AddModalProps } from '../../../types/modal';
+import { AUTHORIZATION_KEY, ACCESS_TOKEN_KEY, api } from '../../../config';
 
-const AddToDoForm = ({ setIsAddFormOpen }: ModalProps) => {
+const AddToDoForm = ({ setIsAddFormOpen }: AddModalProps) => {
   const [toDo, setToDo] = useState({
     title: '',
     content: '',
@@ -21,7 +21,7 @@ const AddToDoForm = ({ setIsAddFormOpen }: ModalProps) => {
 
     try {
       const response = await axios.post(api.todos, toDo, {
-        headers: { Authorization: localStorage.getItem('token') },
+        headers: { [AUTHORIZATION_KEY]: localStorage.getItem(ACCESS_TOKEN_KEY) },
       });
 
       if (response.statusText === 'OK') {

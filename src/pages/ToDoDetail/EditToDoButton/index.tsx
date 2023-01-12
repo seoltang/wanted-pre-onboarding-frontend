@@ -1,8 +1,8 @@
 import React from 'react';
 import { MiniButton } from '../../../styles/theme';
-import type { ModalProps } from '..';
+import type { EditModalProps } from '../../../types/modal';
 
-const EditToDoButton = ({ setIsEditFormOpen }: ModalProps) => {
+const EditToDoButton = ({ setIsEditFormOpen }: EditModalProps) => {
   return (
     <MiniButton onClick={() => setIsEditFormOpen(true)}>
       <i className="fa-regular fa-pen-to-square" />

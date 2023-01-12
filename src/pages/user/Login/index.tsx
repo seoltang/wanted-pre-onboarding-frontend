@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Form, { InputValue } from '../Form';
-import { PATH, api } from '../../../config';
+import Form from '../Form';
+import type { InputValue } from '../../../types/authForm';
+import { ACCESS_TOKEN_KEY, PATH, api } from '../../../config';
 import useAutoLogin from '../../../hooks/useAutoLogin';
 
 const Login = () => {
@@ -15,7 +16,7 @@ const Login = () => {
       const response = await axios.post(api.login, { email, password });
 
       if (response.statusText === 'OK') {
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem(ACCESS_TOKEN_KEY, response.data.token);
         navigate('/');
         return;
       }
