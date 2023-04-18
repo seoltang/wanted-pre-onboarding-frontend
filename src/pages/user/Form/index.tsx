@@ -107,6 +107,10 @@ const SubmitBtn = styled.button`
 
   &:hover {
     background-color: ${theme.darkAccentColor};
+
+    &:disabled {
+      background-color: ${theme.color.gray};
+    }
   }
 `;
 
