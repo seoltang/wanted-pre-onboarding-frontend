@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import formData from './formData';
-import { validateEmail, validatePassword } from './validation';
-import type { FormProps, InputValue } from '../../../types/authForm';
-import theme, { flexCustom } from '../../../styles/theme';
+import { FORM_INPUTS, FORM_TYPE } from '../../constant/authForm';
+import { validateEmail, validatePassword } from '../../utils/authValidate';
+import theme, { flexCustom } from '../../styles/theme';
 
-const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
-  const [inputValue, setInputValue] = useState<InputValue>({
+type FormProps = {
+  formType: string;
+  postForm: (inputValue: authType.Input) => void;
+  linkUrl: string;
+  linkMessage: string;
+};
+
+function AuthForm({ formType, postForm, linkUrl, linkMessage }: FormProps) {
+  const [inputValue, setInputValue] = useState<authType.Input>({
     email: '',
     password: '',
   });
@@ -31,26 +37,41 @@ const Form = ({ submitType, postForm, linkUrl, linkMessage }: FormProps) => {
     <Container>
       <StyledForm onSubmit={onSubmit}>
         <InputWrapper>
-          {formData.map(({ type, name }) => (
+          {FORM_INPUTS.map(({ type, name, testId }) => (
             <StyledLabel key={type}>
               <LabelName>{name}</LabelName>
-              <StyledInput name={type} type={type} onInput={handleInput} value={inputValue[type]} />
+              <StyledInput
+                name={type}
+                type={type}
+                onInput={handleInput}
+                value={inputValue[type]}
+                data-testid={testId}
+              />
               <ValidationIcon
-                className={`fa-regular fa-circle-${isValid[type] ? 'check' : 'xmark'}`}
+                className={`fa-regular fa-circle-${
+                  isValid[type] ? 'check' : 'xmark'
+                }`}
                 isValid={isValid[type]}
                 inputValue={inputValue[type]}
               />
             </StyledLabel>
           ))}
         </InputWrapper>
-        <SubmitBtn disabled={Object.values(isValid).some((isValidValue) => !isValidValue)}>{submitType}</SubmitBtn>
+        <SubmitBtn
+          disabled={Object.values(isValid).some(
+            (isValidValue) => !isValidValue
+          )}
+          data-testid={`${FORM_TYPE[formType]}-button`}
+        >
+          {{ signin: '로그인', signup: '회원가입' }[formType]}
+        </SubmitBtn>
       </StyledForm>
       <Link to={linkUrl}>
         <NavigateBtn>{linkMessage}</NavigateBtn>
       </Link>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   ${flexCustom('center', 'center', 'column')}
@@ -124,4 +145,4 @@ const NavigateBtn = styled.div`
   }
 `;
 
-export default Form;
+export default AuthForm;
