@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { API, ACCESS_TOKEN_KEY } from '@constants/config';
 
 async function getTodos() {
@@ -17,6 +17,11 @@ async function getTodos() {
     return [];
   } catch (error) {
     console.error(error);
+
+    if (error instanceof AxiosError && error?.response?.status === 401) {
+      alert('로그인 후 이용해주세요.');
+      return [];
+    }
 
     alert('로딩에 실패했습니다. 다시 시도해주세요.');
     return [];

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import getTodos from '@utils/todo/getTodos';
+import useRedirectToLogin from '@hooks/useRedirectToLogin';
 import LogoutButton from '@components/LogoutButton';
 import AddTodoForm from './AddTodoForm';
 import TodoItem from './TodoItem';
 import * as S from './style';
 
 function Todo() {
+  useRedirectToLogin();
+
   const [todos, setTodos] = useState<TodoType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 

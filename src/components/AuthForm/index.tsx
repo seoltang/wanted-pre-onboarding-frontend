@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FORM_INPUTS, FORM_TYPE } from '@constants/authForm';
+import useRedirectToTodo from '@hooks/useRedirectToTodo';
 import { validateEmail, validatePassword } from '@utils/authValidate';
 import * as S from './style';
 
@@ -12,6 +13,8 @@ type FormProps = {
 };
 
 function AuthForm({ formType, postForm, linkUrl, linkMessage }: FormProps) {
+  useRedirectToTodo();
+
   const [inputValue, setInputValue] = useState<authType.Input>({
     email: '',
     password: '',
