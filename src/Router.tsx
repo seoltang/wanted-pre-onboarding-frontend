@@ -4,8 +4,7 @@ import { ROUTE_PATH } from '@constants/config';
 import Login from '@pages/auth/Login';
 import SignUp from '@pages/auth/SignUp';
 import Landing from '@pages/Landing';
-import ToDoDetail from '@pages/ToDoDetail';
-import ToDoList from '@pages/ToDoList';
+import Todo from '@pages/Todo';
 
 function Router() {
   return (
@@ -14,9 +13,7 @@ function Router() {
         <Route path="/" element={<Landing />} />
         <Route path={ROUTE_PATH.login} element={<Login />} />
         <Route path={ROUTE_PATH.signUp} element={<SignUp />} />
-        <Route path={ROUTE_PATH.toDo} element={<ToDoList />}>
-          <Route path=":id" element={<ToDoDetail />} />
-        </Route>
+        <Route path={ROUTE_PATH.todo} element={<Todo />} />
       </Routes>
     </BrowserRouter>
   );

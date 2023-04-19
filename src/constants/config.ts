@@ -9,7 +9,7 @@ export const API = {
 export const ROUTE_PATH = {
   login: '/signin',
   signUp: '/signup',
-  toDo: '/todo',
+  todo: '/todo',
 };
 
 export const AUTHORIZATION_KEY = 'Authorization';

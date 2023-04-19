@@ -62,7 +62,7 @@ export const MiniButton = styled.button`
   color: ${theme.color.accent};
   border-radius: 50%;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 0;
 
   &:hover {

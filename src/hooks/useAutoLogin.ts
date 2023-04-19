@@ -8,7 +8,7 @@ const useAutoLogin = () => {
   useEffect(() => {
     const token = localStorage.getItem(ACCESS_TOKEN_KEY);
 
-    if (token) navigate(ROUTE_PATH.toDo);
+    if (token) navigate(ROUTE_PATH.todo);
   }, [navigate]);
 };
 

@@ -22,7 +22,7 @@ function Login() {
 
       if (response.status === 200) {
         localStorage.setItem(ACCESS_TOKEN_KEY, response.data[ACCESS_TOKEN_KEY]);
-        navigate(ROUTE_PATH.toDo);
+        navigate(ROUTE_PATH.todo);
       }
     } catch (error) {
       if (error instanceof AxiosError) {
