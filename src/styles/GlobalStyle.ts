@@ -11,11 +11,11 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-family: 'Noto Sans KR', sans-serif;
-    color: ${theme.textColor};
+    color: ${theme.color.text};
   }
   
   body {
-    background-color: ${theme.backgroundColor};
+    background-color: ${theme.color.background};
   }
   
   a {

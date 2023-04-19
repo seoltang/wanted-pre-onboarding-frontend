@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ACCESS_TOKEN_KEY, PATH } from '../config';
+import { ACCESS_TOKEN_KEY, ROUTE_PATH } from '@constants/config';
 
 const useTokenCheck = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const useTokenCheck = () => {
 
     if (!token) {
       alert('로그인이 만료되었습니다. 다시 로그인해 주세요.');
-      navigate(PATH.login);
+      navigate(ROUTE_PATH.login);
     }
   };
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
-import AuthForm from '../../../components/AuthForm';
-import { PATH, api } from '../../../config';
-import { FORM_TYPE } from '../../../constant/authForm';
+import { FORM_TYPE } from '@constants/authForm';
+import { ROUTE_PATH, API } from '@constants/config';
+import AuthForm from '@components/AuthForm';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function SignUp() {
   const createUser = async ({ email, password }: authType.Input) => {
     try {
       const response = await axios.post(
-        api.signUp,
+        API.signUp,
         JSON.stringify({ email, password }),
         {
           headers: {
@@ -22,7 +22,7 @@ function SignUp() {
 
       if (response.status === 201) {
         alert('회원가입이 완료되었습니다. 로그인 화면으로 이동합니다.');
-        navigate(PATH.login);
+        navigate(ROUTE_PATH.login);
       }
     } catch (error) {
       console.error(error);
@@ -36,7 +36,7 @@ function SignUp() {
     <AuthForm
       formType={FORM_TYPE.signup}
       postForm={createUser}
-      linkUrl={PATH.login}
+      linkUrl={ROUTE_PATH.login}
       linkMessage="이미 회원이신가요? 로그인"
     />
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
-import AuthForm from '../../../components/AuthForm';
-import { ACCESS_TOKEN_KEY, PATH, api } from '../../../config';
-import { FORM_TYPE } from '../../../constant/authForm';
+import { FORM_TYPE } from '@constants/authForm';
+import { ACCESS_TOKEN_KEY, ROUTE_PATH, API } from '@constants/config';
+import AuthForm from '@components/AuthForm';
 
 function Login() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function Login() {
   const loginUser = async ({ email, password }: authType.Input) => {
     try {
       const response = await axios.post(
-        api.login,
+        API.login,
         JSON.stringify({ email, password }),
         {
           headers: {
@@ -21,8 +21,8 @@ function Login() {
       );
 
       if (response.status === 200) {
-        localStorage.setItem(ACCESS_TOKEN_KEY, response.data.access_token);
-        navigate(PATH.toDo);
+        localStorage.setItem(ACCESS_TOKEN_KEY, response.data[ACCESS_TOKEN_KEY]);
+        navigate(ROUTE_PATH.toDo);
       }
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -41,7 +41,7 @@ function Login() {
     <AuthForm
       formType={FORM_TYPE.signin}
       postForm={loginUser}
-      linkUrl={PATH.signUp}
+      linkUrl={ROUTE_PATH.signUp}
       linkMessage="아직 회원이 아니신가요? 회원가입"
     />
   );

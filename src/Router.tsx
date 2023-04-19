@@ -1,24 +1,25 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Landing from './pages/Landing';
-import Login from './pages/user/Login';
-import SignUp from './pages/user/SignUp';
-import ToDoList from './pages/ToDoList';
-import ToDoDetail from './pages/ToDoDetail';
-import { PATH } from './config';
+import { ROUTE_PATH } from '@constants/config';
+import Login from '@pages/auth/Login';
+import SignUp from '@pages/auth/SignUp';
+import Landing from '@pages/Landing';
+import ToDoDetail from '@pages/ToDoDetail';
+import ToDoList from '@pages/ToDoList';
 
-const Router = () => {
+function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path={PATH.login} element={<Login />} />
-        <Route path={PATH.signUp} element={<SignUp />} />
-        <Route path={PATH.toDo} element={<ToDoList />} />
-        <Route path={`${PATH.toDo}/:id`} element={<ToDoDetail />} />
+        <Route path={ROUTE_PATH.login} element={<Login />} />
+        <Route path={ROUTE_PATH.signUp} element={<SignUp />} />
+        <Route path={ROUTE_PATH.toDo} element={<ToDoList />}>
+          <Route path=":id" element={<ToDoDetail />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default Router;

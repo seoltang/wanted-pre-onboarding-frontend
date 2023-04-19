@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ACCESS_TOKEN_KEY, PATH } from '../config';
+import { ACCESS_TOKEN_KEY, ROUTE_PATH } from '@constants/config';
 
 const useAutoLogin = () => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ const useAutoLogin = () => {
   useEffect(() => {
     const token = localStorage.getItem(ACCESS_TOKEN_KEY);
 
-    if (token) navigate(PATH.toDo);
+    if (token) navigate(ROUTE_PATH.toDo);
   }, [navigate]);
 };
 
