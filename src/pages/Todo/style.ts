@@ -15,3 +15,10 @@ export const TodosWrapper = styled.ul`
   ${flexCustom('column', 'flex-start', 'flex-start')}
   row-gap: 12px;
 `;
+
+export const EmptyMessage = styled.div`
+  color: ${({ theme }) => theme.color.gray};
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.8em;
+`;

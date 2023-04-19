@@ -1,26 +1,26 @@
 import axios from 'axios';
 import { API, ACCESS_TOKEN_KEY } from '@constants/config';
 
-function getTodos() {
-  let todos: TodoType[] | null = null;
+async function getTodos() {
+  try {
+    const response = await axios(API.todos, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN_KEY)}`,
+      },
+    });
 
-  const suspender = axios(API.todos, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN_KEY)}`,
-    },
-  }).then(({ data }) => {
-    todos = data;
-  });
+    if (response.status === 200) {
+      return response.data;
+    }
 
-  return {
-    read() {
-      if (todos === null) {
-        throw suspender;
-      } else {
-        return todos;
-      }
-    },
-  };
+    alert('로딩에 실패했습니다. 다시 시도해주세요.');
+    return [];
+  } catch (error) {
+    console.error(error);
+
+    alert('로딩에 실패했습니다. 다시 시도해주세요.');
+    return [];
+  }
 }
 
 export default getTodos;

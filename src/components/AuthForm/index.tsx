@@ -56,6 +56,7 @@ function AuthForm({ formType, postForm, linkUrl, linkMessage }: FormProps) {
             </S.StyledLabel>
           ))}
         </S.InputWrapper>
+
         <S.SubmitBtn
           disabled={Object.values(isValid).some(
             (isValidValue) => !isValidValue
@@ -65,8 +66,13 @@ function AuthForm({ formType, postForm, linkUrl, linkMessage }: FormProps) {
           {{ signin: '로그인', signup: '회원가입' }[formType]}
         </S.SubmitBtn>
       </S.StyledForm>
+
       <Link to={linkUrl}>
-        <S.NavigateBtn>{linkMessage}</S.NavigateBtn>
+        <S.NavigateButton>{linkMessage}</S.NavigateButton>
+      </Link>
+
+      <Link to="/">
+        <S.HomeButton>처음으로</S.HomeButton>
       </Link>
     </S.Container>
   );

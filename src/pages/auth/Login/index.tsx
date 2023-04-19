@@ -23,16 +23,19 @@ function Login() {
       if (response.status === 200) {
         localStorage.setItem(ACCESS_TOKEN_KEY, response.data[ACCESS_TOKEN_KEY]);
         navigate(ROUTE_PATH.todo);
+        return;
       }
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        console.error(error);
 
+      alert('로그인에 실패했습니다. 다시 시도해주세요.');
+    } catch (error) {
+      console.error(error);
+
+      if (error instanceof AxiosError) {
         if (error?.response?.status === 401) {
           alert('잘못된 비밀번호입니다. 다시 확인해주세요.');
         } else if (error?.response?.status === 404) {
           alert('존재하지 않는 이메일입니다.');
-        } else alert('이메일 또는 비밀번호를 다시 확인해주세요.');
+        } else alert('로그인에 실패했습니다. 다시 시도해주세요.');
       }
     }
   };

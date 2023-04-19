@@ -23,12 +23,16 @@ function SignUp() {
       if (response.status === 201) {
         alert('회원가입이 완료되었습니다. 로그인 화면으로 이동합니다.');
         navigate(ROUTE_PATH.login);
+        return;
       }
+
+      alert('회원가입에 실패했습니다. 다시 시도해주세요.');
     } catch (error) {
       console.error(error);
 
-      if (error instanceof AxiosError) alert(error?.response?.data.message);
-      else alert('오류가 발생했습니다. 다시 시도해주세요.');
+      if (error instanceof AxiosError) {
+        alert(error?.response?.data.message);
+      } else alert('회원가입에 실패했습니다. 다시 시도해주세요.');
     }
   };
 

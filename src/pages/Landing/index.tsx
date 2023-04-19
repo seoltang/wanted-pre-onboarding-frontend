@@ -17,11 +17,11 @@ function Landing() {
       <S.SubTitle>할 일을 체계적으로 관리해 보세요.</S.SubTitle>
       <S.AuthWrapper>
         <Link to={ROUTE_PATH.login}>
-          <S.NavigateBtn>로그인</S.NavigateBtn>
+          <S.NavigateButton>로그인</S.NavigateButton>
         </Link>
         <S.Divider>/</S.Divider>
         <Link to={ROUTE_PATH.signUp}>
-          <S.NavigateBtn>회원가입</S.NavigateBtn>
+          <S.NavigateButton>회원가입</S.NavigateButton>
         </Link>
       </S.AuthWrapper>
     </S.Container>

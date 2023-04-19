@@ -3,10 +3,10 @@ import { flexCustom } from '@styles/common';
 
 export const Container = styled.div`
   ${flexCustom('column')}
+  height: 100vh;
 `;
 
 export const MainTitle = styled.h1`
-  padding-top: 300px;
   font-size: 72px;
   font-weight: 900;
 `;
@@ -25,7 +25,7 @@ export const AuthWrapper = styled.div`
   ${flexCustom()}
 `;
 
-export const NavigateBtn = styled.div`
+export const NavigateButton = styled.div`
   color: ${({ theme }) => theme.color.accent};
   font-size: 14px;
   font-weight: 500;

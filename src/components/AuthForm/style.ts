@@ -3,7 +3,7 @@ import { flexCustom } from '@styles/common';
 
 export const Container = styled.div`
   ${flexCustom('column')}
-  margin-top: 320px;
+  height: 100vh;
 `;
 
 export const StyledForm = styled.form`
@@ -66,7 +66,7 @@ export const SubmitBtn = styled.button`
   }
 `;
 
-export const NavigateBtn = styled.div`
+export const NavigateButton = styled.div`
   margin-top: 32px;
   color: ${({ theme }) => theme.color.accent};
   font-size: 14px;
@@ -74,4 +74,9 @@ export const NavigateBtn = styled.div`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const HomeButton = styled(NavigateButton)`
+  margin-top: 24px;
+  color: ${({ theme }) => theme.color.gray};
 `;
