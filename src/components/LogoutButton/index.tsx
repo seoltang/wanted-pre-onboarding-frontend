@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { ACCESS_TOKEN_KEY } from '../../config';
-import { RoundedBorderButton } from '../../styles/theme';
+import { ACCESS_TOKEN_KEY } from '@constants/config';
+import * as S from './style';
 
-const LogoutButton = () => {
+function LogoutButton() {
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -12,11 +11,7 @@ const LogoutButton = () => {
     navigate('/');
   };
 
-  return <LogoutBtn onClick={logoutUser}>로그아웃</LogoutBtn>;
-};
-
-const LogoutBtn = styled(RoundedBorderButton)`
-  font-size: 14px;
-`;
+  return <S.LogoutBtn onClick={logoutUser}>로그아웃</S.LogoutBtn>;
+}
 
 export default LogoutButton;
