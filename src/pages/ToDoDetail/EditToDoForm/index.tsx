@@ -1,39 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { AUTHORIZATION_KEY, ACCESS_TOKEN_KEY, API } from '@constants/config';
 import * as S from './style';
 
-type AddModalProps = {
-  setIsAddFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
+type EditModalProps = {
+  setIsEditFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  id: string;
+  toDo: {
+    title: string;
+    content: string;
+  };
 };
 
-function AddToDoForm({ setIsAddFormOpen }: AddModalProps) {
-  const [toDo, setToDo] = useState({
-    title: '',
-    content: '',
+function EditToDoForm({ setIsEditFormOpen, id, toDo }: EditModalProps) {
+  const [editedToDo, setEditedToDo] = useState({
+    title: toDo?.title,
+    content: toDo?.content,
   });
+
+  useEffect(() => {
+    setEditedToDo({
+      title: toDo?.title,
+      content: toDo?.content,
+    });
+  }, [toDo]);
 
   const changeToDoValue = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.target;
-    setToDo((state) => ({ ...state, [name]: value }));
+    setEditedToDo((state) => ({ ...state, [name]: value }));
   };
 
   const submitToDo = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(API.todos, toDo, {
+      const response = await axios.put(`${API.todos}/${id}`, editedToDo, {
         headers: {
           [AUTHORIZATION_KEY]: localStorage.getItem(ACCESS_TOKEN_KEY),
         },
       });
 
       if (response.statusText === 'OK') {
-        setIsAddFormOpen(false);
+        setIsEditFormOpen(false);
 
-        setToDo({
+        setEditedToDo({
           title: '',
           content: '',
         });
@@ -44,9 +56,9 @@ function AddToDoForm({ setIsAddFormOpen }: AddModalProps) {
   };
 
   const closeModal = () => {
-    setIsAddFormOpen(false);
+    setIsEditFormOpen(false);
 
-    setToDo({
+    setEditedToDo({
       title: '',
       content: '',
     });
@@ -62,21 +74,21 @@ function AddToDoForm({ setIsAddFormOpen }: AddModalProps) {
           name="title"
           placeholder="제목을 입력하세요."
           onChange={changeToDoValue}
-          value={toDo.title}
+          value={editedToDo.title}
         />
         <S.ContentTextarea
           name="content"
           placeholder="내용을 입력하세요."
           onChange={changeToDoValue}
-          value={toDo.content}
+          value={editedToDo.content}
           wrap="hard"
         />
         <S.SubmitToDoBtn>
-          <i className="fa-solid fa-plus" />
+          <i className="fa-solid fa-check" />
         </S.SubmitToDoBtn>
       </S.Form>
     </S.Modal>
   );
 }
 
-export default AddToDoForm;
+export default EditToDoForm;

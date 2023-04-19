@@ -1,12 +1,12 @@
 export const BASE_URL = 'https://www.pre-onboarding-selection-task.shop';
 
-export const api = {
+export const API = {
   todos: `${BASE_URL}/todos`,
   login: `${BASE_URL}/auth/signin`,
   signUp: `${BASE_URL}/auth/signup`,
 };
 
-export const PATH = {
+export const ROUTE_PATH = {
   login: '/signin',
   signUp: '/signup',
   toDo: '/todo',

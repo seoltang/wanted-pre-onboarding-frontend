@@ -20,11 +20,10 @@
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
+      "typescript": {}
     }
   },
+  "ignorePatterns": ["craco.config.js"],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
@@ -42,7 +41,72 @@
         "tsx": "never"
       }
     ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling"],
+          "index",
+          "unknown"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react*",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "react*/**",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "@hooks/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@utils/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@constant/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@pages/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@components/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@assets/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@styles/*",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react*", "react*/**"],
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
     "no-use-before-define": ["error", { "variables": false }],
+    "import/prefer-default-export": "off",
     "no-alert": "off",
     "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
