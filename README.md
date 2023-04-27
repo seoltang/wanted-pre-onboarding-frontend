@@ -10,3 +10,6 @@
 npm install
 npm start
 ```
+
+### API
+https://github.com/walking-sunset/selection-task
